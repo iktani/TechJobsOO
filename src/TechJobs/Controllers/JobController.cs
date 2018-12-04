@@ -18,9 +18,17 @@ namespace TechJobs.Controllers
         // The detail display for a given Job at URLs like /Job?id=17
         public IActionResult Index(int id)
         {
+            SearchJobsViewModel singleJobViewModel = new SearchJobsViewModel();
+            if (id == 0)
+            {
+                singleJobViewModel.Title = "No job selected";
+                return View(singleJobViewModel);
+            }
             // TODO #1 - get the Job with the given ID and pass it into the view
-
-            return View();
+            
+            singleJobViewModel.SingleJob = jobData.Find(id);
+            singleJobViewModel.Title = "Job Details";
+            return View(singleJobViewModel);
         }
 
         public IActionResult New()
