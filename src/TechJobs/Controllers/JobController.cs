@@ -55,7 +55,7 @@ namespace TechJobs.Controllers
                     PositionType = jobData.PositionTypes.Find(newJobViewModel.PositionTypeID)
                 };
                 jobData.Jobs.Add(newjob);
-                return RedirectToAction("Index", new { id = newjob.ID });
+                return Redirect($"/Job?id={newjob.ID}");
             }
 
 
